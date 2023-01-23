@@ -15,5 +15,21 @@ app.get('/', (req: Request, res: Response) => {
     res.send('Hello World');
 })
 
+app.get('/ejercicio', (req: Request, res: Response) => {
+    res.status(200).json({
+        data: {
+            mensaje: "Good bye, World"
+        }
+    })
+})
+
+app.get('/:nombre', (req: Request, res: Response) => {
+    res.status(200).json({
+        data: {
+            mensaje: "Hola " + req.params.nombre
+        }
+    })
+})
+
 //execute app
 app.listen(port, ()=> console.log('Express running localhost port: ', port))

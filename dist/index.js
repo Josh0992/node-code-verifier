@@ -15,6 +15,20 @@ app.get('/', (req, res) => {
     //send Hello World
     res.send('Hello World');
 });
+app.get('/ejercicio', (req, res) => {
+    res.status(200).json({
+        data: {
+            mensaje: "Good bye, World"
+        }
+    });
+});
+app.get('/:nombre', (req, res) => {
+    res.status(200).json({
+        data: {
+            mensaje: "Hola " + req.params.nombre
+        }
+    });
+});
 //execute app
 app.listen(port, () => console.log('Express running localhost port: ', port));
 //# sourceMappingURL=index.js.map
