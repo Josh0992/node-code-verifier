@@ -1,35 +1,18 @@
-import express, { Express, Request, Response } from "express"; 
-import dotenv from "dotenv"
+//Environment variables
+import dotenv from 'dotenv';
+import server from './src/server';
+import { LogError, LogSuccess } from './src/utils/logger';
 
 //configuration the .env tile
 dotenv.config();
+const port = process.env.PORT || 8000;
 
-//create app Express
-const app: Express = express();
-
-const port: string | number = process.env.PORT || 8000; //si no encuentra el puerto de la variable lo tomara manualmente
-
-//Define the first the route of app
-app.get('/', (req: Request, res: Response) => {
-    //send Hello World
-    res.send('Hello World');
+//*execute server
+server.listen(port, () => {
+    LogSuccess(`[SERVER ON]: Running in http://localhost:${port}/api`)
 })
 
-app.get('/ejercicio', (req: Request, res: Response) => {
-    res.status(200).json({
-        data: {
-            mensaje: "Good bye, World"
-        }
-    })
+//control Server error
+server.on('error', (error)=>{
+    LogError(`[SERVER ERROR]: ${error}`);    
 })
-
-app.get('/:nombre', (req: Request, res: Response) => {
-    res.status(200).json({
-        data: {
-            mensaje: "Hola " + req.params.nombre
-        }
-    })
-})
-
-//execute app
-app.listen(port, ()=> console.log('Express running localhost port: ', port))
