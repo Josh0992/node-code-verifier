@@ -10,6 +10,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const logger_1 = require("../utils/logger");
 const helloRoutes_1 = __importDefault(require("./helloRoutes"));
+const goodByeRouter_1 = __importDefault(require("./goodByeRouter"));
 //Server instance
 let server = (0, express_1.default)();
 //Router instance
@@ -24,5 +25,6 @@ rootRouter.get('/', (req, res) => {
 server.use('/', rootRouter); //http://localhost:8000/api/
 server.use('/hello', helloRoutes_1.default); //http://localhost:8000/api/hello => helloRouter
 //Add more Routes to the app
+server.use('/bye', goodByeRouter_1.default);
 exports.default = server;
 //# sourceMappingURL=index.js.map

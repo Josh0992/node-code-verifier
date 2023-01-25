@@ -7,6 +7,14 @@ export type BasicResponse = {
 }
 
 /**
+ * MessageDateResponse json response controller
+ */
+export type messageDateResponse = {
+    message: string,
+    date: Date
+}
+
+/**
  * Error Json Response Controller
  */
 export type ErrorResponse = {
