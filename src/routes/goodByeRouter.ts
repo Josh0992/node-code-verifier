@@ -1,4 +1,5 @@
 import express, {Request, Response} from 'express';
+import { messageDateResponse } from 'src/controller/types';
 import { goodByeController } from '../controller/goodByeController';
 import { LogInfo } from '../utils/logger';
 
@@ -9,7 +10,7 @@ goodByeRoute.route('/')
 let name: any = req?.query?.name;
 LogInfo(`Query params ${name}`);
 const controller: goodByeController = new goodByeController();
-const response = await controller.getMessageDate(name);
+const response: messageDateResponse = await controller.getMessageDate(name);
 return res.send(response);
 })
 

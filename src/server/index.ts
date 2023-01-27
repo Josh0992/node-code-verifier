@@ -1,4 +1,5 @@
 import express, {Request, Response} from 'express';
+import swaggerUi from "swagger-ui-express";
 
 //Security
 import cors from 'cors';
@@ -16,6 +17,9 @@ const server = express();
 //from this point onover: http://localhost:8000/api/...
 server.use('/api', rootRouter)
 
+//Static Server
+server.use(express.static('public'))
+
 //TODO: Mongoose Connection
 
 //Security config
@@ -31,5 +35,13 @@ server.use(express.json({limit: '50mb'}))
 server.get('/', (req: Request, res: Response) =>{
     res.redirect('/api')
 })
+
+//implements html SWIGGER
+//http://localhost:8000/docs
+server.use("/docs", swaggerUi.serve, async (_req: Request, res: Response) => {
+    return res.send(
+      swaggerUi.generateHTML(await import("../../public/swagger.json"))
+    );
+  });
 
 export default server;
