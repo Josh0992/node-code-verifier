@@ -9,6 +9,7 @@ import { helloController } from '../controller/helloController';
 import helloRoute from './helloRoutes';
 import goodByeRoute from './goodByeRouter';
 import { info } from 'console';
+import usersRoute from './userRouter';
 
 //Server instance
 let server = express();
@@ -27,5 +28,6 @@ server.use('/', rootRouter); //http://localhost:8000/api/
 server.use('/hello', helloRoute); //http://localhost:8000/api/hello => helloRouter
 //Add more Routes to the app
 server.use('/bye', goodByeRoute);
+server.use('/users', usersRoute); //http://localhost:8000/api/users => userRouter
 
 export default server;

@@ -10,3 +10,8 @@ export interface IGoodByeController{
 }
 
 //es una implementación especifica donde se indica lo que el metodo debe hacer.
+export interface IUserController{
+
+    //Read all user from database
+    getUsers(): Promise<any>
+}

@@ -12,5 +12,5 @@ export const katasEntity = () => {
             attempts: Number
         }
     )
-    return mongoose.model("katas", katasSchema)
+    return mongoose.model("katas", katasSchema);
 }
